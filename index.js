@@ -37,11 +37,10 @@ contract Event =
     let  _event_owner  = eventh.created_by : address
     require(eventh.id > 0,abort("NOT A Event ID"))
     require(Call.value >= eventh.price,abort("You Don't Have Enough AE"))
-    require(_event_owner != Call.caller,"Event Cre CAN'T PURCHASE HIS ITEM")
     Chain.spend(_event_owner, Call.value) 
 `
 
-const contractAddress ='ct_jbgSe7BYPQqfozEUoinkAQawSZiWRK6QcxAbX1g9EXP8dNmNR'
+const contractAddress ='ct_YqfqKEAfZSCW3pz4XwAukZmhfVwnaoKS1AGwEtMdtJa3wknFp'
 
 var client = null // client defuault null
 var eventListArr = [] // empty arr
