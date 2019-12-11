@@ -37,7 +37,6 @@ contract Event =
     let  _event_owner  = eventh.created_by : address
     require(eventh.id > 0,abort("NOT A Event ID"))
     require(Call.value >= eventh.price,abort("You Don't Have Enough AE"))
-    require(!eventh.purchased,abort("Event ALREADY PURCHASED"))   
     require(_event_owner != Call.caller,"Event Cre CAN'T PURCHASE HIS ITEM")
     Chain.spend(_event_owner, Call.value) 
 `
@@ -79,7 +78,9 @@ function renderEventList(){
 // onload
 window.addEventListener('load', async() => {
     $("#loader").show();
-    console.log("Lod.....")
+    console.log("#########################################")
+    console.log("######### Load ###########")
+    console.log("#########################################")
     client = await Ae.Aepp();
     eventListLength = await callStatic('getEventLength',[]);
     //display the events on the console
@@ -106,7 +107,9 @@ window.addEventListener('load', async() => {
 $("#list_events_href").click(function(){
     console.log("List Event");
     /////
+
     $("#add_event_form").hide()
+    renderEventList() 
     $("#list_events").show()
     
 })
@@ -140,3 +143,25 @@ $("#add_event_href").click(function(){
 })
 
 
+
+
+// // Buy A Product
+$("#getEvent").on("click",".buyBtn", async function(event){
+  $("#loader").show();
+
+  const dataIndex = event.target.id
+  const eventListArrPrice = eventListArr[dataIndex].price
+  console.log("Price of product",eventListArrPrice)
+  const purchased_event = await contractCall('buy_ticket', [dataIndex],parseInt(eventListArrPrice, 10));
+  console.log("Purchase:", purchased_event)
+  
+  // const foundIndex = productListArr.findIndex(product => product.id === dataIndex)
+  // const value = $(".buyBtn")[foundIndex] ;
+
+  console.log("-----------------")
+  console.log("Data Index:", dataIndex)
+  console.log("--------------------------")
+  
+  console.log("Just Clicked The Buy Button")
+  event.preventDefault();
+});
