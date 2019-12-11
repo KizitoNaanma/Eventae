@@ -109,7 +109,7 @@ $("#list_events_href").click(function(){
     /////
 
     $("#add_event_form").hide()
-    renderEventList() 
+    // renderEventList() 
     $("#list_events").show()
     
 })
