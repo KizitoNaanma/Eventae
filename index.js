@@ -108,9 +108,9 @@ $("#list_events_href").click(function(){
     /////
 
     $("#add_event_form").hide()
-    // renderEventList() 
-    $("#list_events").show()
     
+    $("#list_events").show()
+    renderEventList() 
 })
 // click list evenclick list nav
 
@@ -149,7 +149,8 @@ $("#getEvent").on("click",".buyBtn", async function(event){
   $("#loader").show();
 
   const dataIndex = event.target.id
-  const eventListArrPrice = eventListArr[dataIndex].price
+  console.log(typeof dataIndex)
+  const eventListArrPrice = eventListArr[dataIndex - 1].price
   console.log("Price of product",eventListArrPrice)
   const purchased_event = await contractCall('buy_ticket', [dataIndex],parseInt(eventListArrPrice, 10));
   console.log("Purchase:", purchased_event)
