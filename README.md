@@ -1,1 +1,3 @@
-<!-- ct_2MDK5dmeVrD7f7FuwtkmphRN1zKeE6RXDerZwfzfc13eeq3ghw -->
+## Eventae
+a decentralise platform that helps you create events and manage them
+
