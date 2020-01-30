@@ -116,6 +116,7 @@ $("#list_events_href").click(function(){
 
 //click the Create Button
 $("#addButton").click(async function(){
+  $("#loader").show();
     console.log("Hello World.....");
     // Data Picker Initialization
     var name = ($("#name").val());
@@ -155,6 +156,7 @@ $("#addButton").click(async function(){
     $("#description").val("");
     $("#date").val("");
     $("#price").val("");
+    $("#loader").hide();
 }) 
 $("#add_event_href").click(function(){
     console.log("add Event");
@@ -167,6 +169,7 @@ $("#add_event_href").click(function(){
 
 // // Buy A Product
 $("#getEvent").on("click",".buyBtn", async function(event){
+
   $("#loader").show();
 
   const dataIndex = event.target.id
@@ -185,4 +188,5 @@ $("#getEvent").on("click",".buyBtn", async function(event){
   
   console.log("Just Clicked The Buy Button")
   event.preventDefault();
+  $("#loader").hide();
 });
