@@ -125,9 +125,30 @@ $("#addButton").click(async function(){
     var d = new Date(date).getTime()
     // var n = d.getTime()
 
+
     // console.log(new Date(d))
     // console.log(new Date(n))
-    const new_event = await contractCall('add_event', [name, description, d,price],0);
+   await contractCall('add_event', [name, description, d,price],0);
+
+    const total  = await callStatic('getEventLength', [])
+    // Push to array
+
+    const newEvent  = await callStatic('get_event_by_index', [total])
+    eventListArr.push({
+      index_counter:total,
+      id:newEvent.id,
+      name:newEvent.name,
+      description:newEvent.description,
+      createdAt:new Date(newEvent.createdAt),
+      updatedAt:new Date(newEvent.updatedAt),
+      created_by:newEvent.created_by,
+      event_date:new Date(newEvent.event_date),
+      price:newEvent.price
+    })
+
+    
+
+    renderEventList(); 
 
     // clear
     $("#name").val("");
