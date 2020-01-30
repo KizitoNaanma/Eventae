@@ -1,5 +1,5 @@
 ## Eventae
-a decentralise platform that helps you create events and manage them
+A decentralise platform that helps you create events and manage them
 
 #### Test The Dapp
 * Go to this link http://base.aepps.com/
