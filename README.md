@@ -9,3 +9,6 @@ a decentralise platform that helps you create events and manage them
 ![Screenshots!](/img/event_.png "Screenshots")
 ![Screenshots!](/img/event_2.png "Screenshots")
 ![Screenshots!](/img/event4.png "Screenshots")
+
+
+
