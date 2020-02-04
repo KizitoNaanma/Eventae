@@ -40,7 +40,8 @@ contract Event =
     Chain.spend(_event_owner, Call.value) 
 `
 
-const contractAddress ='ct_YqfqKEAfZSCW3pz4XwAukZmhfVwnaoKS1AGwEtMdtJa3wknFp'
+const contractAddress ='ct_QLGtBMFjqEqd9QEKVXfd7BbViD9efhroNrpKx4kbzdG8ok9gB'
+// 'ct_YqfqKEAfZSCW3pz4XwAukZmhfVwnaoKS1AGwEtMdtJa3wknFp'
 
 var client = null // client defuault null
 var eventListArr = [] // empty arr
