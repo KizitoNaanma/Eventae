@@ -117,6 +117,7 @@ $("#list_events_href").click(function(){
 
 //click the Create Button
 $("#addButton").click(async function(){
+  $("#loader").show();
     console.log("Hello World.....");
     // Data Picker Initialization
     var name = ($("#name").val());
@@ -126,15 +127,37 @@ $("#addButton").click(async function(){
     var d = new Date(date).getTime()
     // var n = d.getTime()
 
+
     // console.log(new Date(d))
     // console.log(new Date(n))
-    const new_event = await contractCall('add_event', [name, description, d,price],0);
+   await contractCall('add_event', [name, description, d,price],0);
+
+    const total  = await callStatic('getEventLength', [])
+    // Push to array
+
+    const newEvent  = await callStatic('get_event_by_index', [total])
+    eventListArr.push({
+      index_counter:total,
+      id:newEvent.id,
+      name:newEvent.name,
+      description:newEvent.description,
+      createdAt:new Date(newEvent.createdAt),
+      updatedAt:new Date(newEvent.updatedAt),
+      created_by:newEvent.created_by,
+      event_date:new Date(newEvent.event_date),
+      price:newEvent.price
+    })
+
+    
+
+    renderEventList(); 
 
     // clear
     $("#name").val("");
     $("#description").val("");
     $("#date").val("");
     $("#price").val("");
+    $("#loader").hide();
 }) 
 $("#add_event_href").click(function(){
     console.log("add Event");
@@ -147,6 +170,7 @@ $("#add_event_href").click(function(){
 
 // // Buy A Product
 $("#getEvent").on("click",".buyBtn", async function(event){
+
   $("#loader").show();
 
   const dataIndex = event.target.id
@@ -165,4 +189,5 @@ $("#getEvent").on("click",".buyBtn", async function(event){
   
   console.log("Just Clicked The Buy Button")
   event.preventDefault();
+  $("#loader").hide();
 });
